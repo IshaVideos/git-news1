@@ -26,7 +26,8 @@ for rss_category in config['rssurl']:
         print(feedurl)   
         try: 
             print('trying')
-            feedparser.parse(feedurl) # Proper rss feed. Use feedparser to get the data
+            rss_feed = feedparser.parse(feedurl) # Proper rss feed. Use feedparser to get the data
+            print(rss_feed)
         except: print('Unable to get rss feed from', rss_url)
         
         if rss_feed.status == 200: 
