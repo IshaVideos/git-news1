@@ -27,11 +27,11 @@ for rss_category in config['rssurl']:
         try: 
             print('trying')
             rss_feed = feedparser.parse(feedurl) # Proper rss feed. Use feedparser to get the data
-            print(rss_feed)
+            print('done')
         except: print('Unable to get rss feed from', rss_url)
         
         if rss_feed.status == 200: 
-            print('in here')
+            print('status is 200')
             rss2json[rss_category_renamed][rss_url] = dict()
             rss2json[rss_category_renamed][rss_url]['feed'] = dict()
             rss2json[rss_category_renamed][rss_url]['entries'] = []
