@@ -16,4 +16,9 @@ time_now = time.time()
 
 for rss_category in config['rssurl']:
     print(rss_category)
-    
+    rss_category_renamed = rss_category.replace('/','_') # If category name has /, class and id names in html will break
+        rss2json[rss_category_renamed] = dict()
+        for rss_url_full in config['rssurl'][rss_category]:
+            rss_url = rss_url_full.split('::')[0]
+            print(rss_url)
+            
