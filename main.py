@@ -21,4 +21,9 @@ for rss_category in config['rssurl']:
     for rss_url_full in config['rssurl'][rss_category]:
         rss_url = rss_url_full.split('::')[0]
         print(rss_url)
-            
+        
+        try:
+            if 'http:' in rss_url or 'https:' in rss_url: rss_feed = feedparser.parse(rss_url) # Proper rss feed. Use feedparser to get the data
+            else: rss_feed = feedparser.parse(f"https://news.google.com/rss/search?q=allinurl:{rss_url}+when:{hrsTime}h&ceid=IN:en&hl=en-IN&gl=IN") # Use Google News url (https://newscatcherapi.com/blog/google-news-rss-search-parameters-the-missing-documentaiton)
+            print('feed parsed')    
+        except: print('Unable to get rss feed from', rss_url)
